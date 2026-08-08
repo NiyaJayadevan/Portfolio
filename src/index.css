@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-fade-slide {
+    animation: fadeSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-marquee {
+    animation: marquee-left 30s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Custom Border Gradient style from Professional Polish Theme */
+.border-gradient {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  transition: all 0.3s ease;
+}
+
+.border-gradient:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 25px -5px rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Corner Dotted Button Wrapper from theme design */
+.btn-wrapper {
+  --dot-size: 5px;
+  --line-weight: 1px;
+  --line-distance: 0.8rem 1.2rem;
+  --dot-color: rgba(255, 255, 255, 0.9);
+  --line-color: rgba(255, 255, 255, 0.2);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--line-distance);
+  background-color: transparent;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.btn-wrapper .line {
+  position: absolute;
+  background-color: var(--line-color);
+  transition: background-color 0.3s ease;
+}
+
+.btn-wrapper .line.horizontal {
+  height: var(--line-weight);
+  left: 0;
+  right: 0;
+}
+.btn-wrapper .line.horizontal.top { top: 0; }
+.btn-wrapper .line.horizontal.bottom { bottom: 0; }
+
+.btn-wrapper .line.vertical {
+  width: var(--line-weight);
+  top: 0;
+  bottom: 0;
+}
+.btn-wrapper .line.vertical.left { left: 0; }
+.btn-wrapper .line.vertical.right { right: 0; }
+
+.btn-wrapper .dot {
+  position: absolute;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background-color: var(--dot-color);
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-wrapper .dot.top.left { top: -2px; left: -2px; }
+.btn-wrapper .dot.top.right { top: -2px; right: -2px; }
+.btn-wrapper .dot.bottom.left { bottom: -2px; left: -2px; }
+.btn-wrapper .dot.bottom.right { bottom: -2px; right: -2px; }
+
+.btn-wrapper:hover .dot {
+  transform: scale(1.4);
+  background-color: #ffffff;
+}
+
+.btn-wrapper:hover .line {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Glass & Deep Obsidian Background */
+body {
+  background-color: #050505;
+  color: #f3f4f6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
